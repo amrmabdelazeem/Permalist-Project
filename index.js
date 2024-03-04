@@ -31,9 +31,9 @@ app.get("/", async (req, res) => {
   });
 });
 
-app.post("/add", (req, res) => {
+app.post("/add", async(req, res) => {
   const item = req.body.newItem;
-  items.push({ title: item });
+  await db.query("INSERT INTO items (title) VALUES($1)",[item]);
   res.redirect("/");
 });
 
@@ -41,12 +41,15 @@ app.post("/edit", async (req, res) => {
   const itemId = req.body.updatedItemId;
   const itemTitle = req.body.updatedItemTitle;
 
-  await db.query(`UPDATE items SET title = $1 WHERE id = $2`, 
-  [itemTitle, itemId]);
+  await db.query(`UPDATE items SET title = $1 WHERE id = $2`, [itemTitle, itemId]);
   res.redirect("/");
 });
 
-app.post("/delete", (req, res) => {});
+app.post("/delete", async (req, res) => {
+  const itemId = req.body.deleteItemId;
+  await db.query('DELETE FROM items WHERE id = $1',[itemId]);
+  res.redirect("/");
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
