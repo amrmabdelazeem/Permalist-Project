@@ -22,33 +22,49 @@ db.connect();
 let items = [];
 
 app.get("/", async (req, res) => {
-  const result = await db.query(`SELECT * FROM items ORDER BY id ASC`);
-  items = result.rows;
+  try {
+    const result = await db.query(`SELECT * FROM items ORDER BY id ASC`);
+    items = result.rows;
 
-  res.render("index.ejs", {
-    listTitle: "Today",
-    listItems: items,
-  });
+    res.render("index.ejs", {
+      listTitle: "Today",
+      listItems: items,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-app.post("/add", async(req, res) => {
-  const item = req.body.newItem;
-  await db.query("INSERT INTO items (title) VALUES($1)",[item]);
-  res.redirect("/");
+app.post("/add", async (req, res) => {
+  try {
+    const item = req.body.newItem;
+    await db.query("INSERT INTO items (title) VALUES($1)", [item]);
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.post("/edit", async (req, res) => {
-  const itemId = req.body.updatedItemId;
-  const itemTitle = req.body.updatedItemTitle;
+  try {
+    const itemId = req.body.updatedItemId;
+    const itemTitle = req.body.updatedItemTitle;
 
-  await db.query(`UPDATE items SET title = $1 WHERE id = $2`, [itemTitle, itemId]);
-  res.redirect("/");
+    await db.query(`UPDATE items SET title = $1 WHERE id = $2`, [itemTitle, itemId]);
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.post("/delete", async (req, res) => {
-  const itemId = req.body.deleteItemId;
-  await db.query('DELETE FROM items WHERE id = $1',[itemId]);
-  res.redirect("/");
+  try {
+    const itemId = req.body.deleteItemId;
+    await db.query("DELETE FROM items WHERE id = $1", [itemId]);
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.listen(port, () => {
