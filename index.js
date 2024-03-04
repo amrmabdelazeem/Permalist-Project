@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
-import 'dotenv/config';
-import pg from 'pg';
+import "dotenv/config";
+import pg from "pg";
 
 const app = express();
 const port = 3000;
@@ -14,15 +14,17 @@ const db = new pg.Client({
   host: process.env.DB_HOST,
   database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT
-})
+  port: process.env.DB_PORT,
+});
 
-let items = [
-  { id: 1, title: "Buy milk" },
-  { id: 2, title: "Finish homework" },
-];
+db.connect();
 
-app.get("/", (req, res) => {
+let items = [];
+
+app.get("/", async (req, res) => {
+  const result = await db.query(`SELECT * FROM items`);
+  items = result.rows;
+
   res.render("index.ejs", {
     listTitle: "Today",
     listItems: items,
