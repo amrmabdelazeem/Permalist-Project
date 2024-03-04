@@ -72,6 +72,7 @@ button.add {
   color: #fff;
   font-size: 30px;
   border-width: 0;
+  cursor: pointer;
 }
 
 button.edit {
@@ -79,6 +80,8 @@ button.edit {
   margin-right: 20px;
   border: none;
   background: none;
+  cursor: pointer;
+
 }
 
 .icon {
