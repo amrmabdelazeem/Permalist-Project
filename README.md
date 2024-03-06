@@ -43,7 +43,7 @@ The code for this application is structured as follows:
 
 # Database Schema
 
-The application uses a single database table called items. This table has two columns: id (a unique identifier for each item) and title (the text of the item).
+The application uses Two database tables called items and time_table. Tables are linked with a one to many relationship with a forigen key.
 
 # Deployment Preview
 
