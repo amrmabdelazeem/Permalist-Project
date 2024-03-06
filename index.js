@@ -24,10 +24,10 @@ let listTitle = "Daily";
 
 app.get("/", async (req, res) => {
   try {
-    const result = await db.query(`SELECT * FROM items
-    INNER JOIN time_table
-    ON time_id = time_table.id
-    WHERE duration = $1`,[listTitle]);
+    const result = await db.query(
+      `SELECT * FROM items INNER JOIN time_table ON time_id = time_table.id WHERE duration =$1 ORDER BY items.id ASC`,
+      [listTitle]
+    );
     items = result.rows;
 
     res.render("index.ejs", {
