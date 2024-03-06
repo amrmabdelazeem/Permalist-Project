@@ -1,7 +1,7 @@
 html {
   background-color: #e4e9fd;
-  background-image: -webkit-linear-gradient(65deg, #a683e3 50%, #e4e9fd 50%);
-  min-height: 1000px;
+  background-image: -webkit-linear-gradient(65deg, #5F5D9C 50%, #6196A6 50%);
+  min-height: 100vh;
   font-family: "helvetica neue";
 }
 body {
@@ -17,7 +17,7 @@ main {
 h1 {
   color: #fff;
   padding: 10px;
-  background-color: #a683e3;
+  background-color: #5F5D9C;
   border-radius: 5px;
 }
 
@@ -31,17 +31,19 @@ h1 {
 }
 
 #select{
+  font-size: 1rem;
   position: absolute;
   top: 0;
   right: 0;
   background-color: #a683;
   border: none;
   padding: 5px;
-  color: #fff;
+  color: #A4CE95;
   cursor: pointer;
 }
 #select:focus{
-  color: black;
+  color: #FAA300;
+  background-color: #5F5D9C;
 }
 
 #heading {
@@ -86,7 +88,7 @@ button.add {
   width: 50px;
   border-radius: 50%;
   border-color: transparent;
-  background-color: #a683e3;
+  background-color: #5F5D9C;
   color: #fff;
   font-size: 30px;
   border-width: 0;
@@ -119,7 +121,7 @@ input[type="text"] {
 
 input[type="text"]:focus {
   outline: none;
-  box-shadow: inset 0 -3px 0 0 #a683e3;
+  box-shadow: inset 0 -3px 0 0 #5F5D9C;
 }
 
 ::placeholder {
