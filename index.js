@@ -31,6 +31,15 @@ async function checkDuartion() {
     }
   });
 }
+
+async function checkDuartionId(){
+  const result = await db.query("SELECT * FROM time_table ORDER BY id ASC");
+  result.rows.forEach((item) => {
+    if (item.duration === listTitle) {
+      durationId = item.id;
+    }
+  });
+}
 app.get("/", async (req, res) => {
   try {
    await checkDuartion();
@@ -51,8 +60,9 @@ app.get("/", async (req, res) => {
 
 app.post("/add", async (req, res) => {
   try {
+    await checkDuartionId();
     const item = req.body.newItem;
-    await db.query("INSERT INTO items (title) VALUES($1)", [item]);
+    await db.query("INSERT INTO items (title, time_id) VALUES($1, $2)", [item, durationId]);
     res.redirect("/");
   } catch (error) {
     console.log(error);
