@@ -37,6 +37,11 @@ h1 {
   background-color: #a683;
   border: none;
   padding: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+#select:focus{
+  color: black;
 }
 
 #heading {
