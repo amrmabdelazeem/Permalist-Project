@@ -27,13 +27,22 @@ h1 {
   background: white;
   border-radius: 5px;
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+#select{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #a683;
+  border: none;
+  padding: 5px;
 }
 
 #heading {
   background-color: #fff;
   text-align: center;
-  display: flex;
-  justify-content: space-around;
+
 }
 form.edit {
   display: flex;
