@@ -4,6 +4,14 @@
     <h1>
       <%= listTitle %>
     </h1>
+    <form action="/change" method="post">
+      <select name="title" id="select" onchange="this.form.submit()">
+        <option selected>Change</option>
+        <option value="1">Daily</option>
+        <option value="2">Monthly</option>
+        <option value="3">Yearly</option>
+      </select>
+    </form>
   </div>
   <div class="box">
     <% for(let item of listItems){%>
