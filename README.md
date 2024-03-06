@@ -1,6 +1,6 @@
 # Todo List App
 
-This is a simple todo list application built using Node.js, Express, and PostgreSQL.
+This is a simple todo list application built using Node.js, Express, EJS and PostgreSQL.
 
 ## Prerequisites
 
@@ -44,6 +44,14 @@ The code for this application is structured as follows:
 # Database Schema
 
 The application uses a single database table called items. This table has two columns: id (a unique identifier for each item) and title (the text of the item).
+
+# Deployment Preview
+
+![Main](public/screenshots/Preview.jpg)
+----
+![Change List Feature](<public/screenshots/Change List.jpg>)
+----
+![Yearly List](<public/screenshots/Yearly List.jpg>)
 
 # Acknowledgements
 
