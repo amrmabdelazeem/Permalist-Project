@@ -32,7 +32,7 @@ async function checkDuartion() {
   });
 }
 
-async function checkDuartionId(){
+async function checkDuartionId() {
   const result = await db.query("SELECT * FROM time_table ORDER BY id ASC");
   result.rows.forEach((item) => {
     if (item.duration === listTitle) {
@@ -42,13 +42,12 @@ async function checkDuartionId(){
 }
 app.get("/", async (req, res) => {
   try {
-   await checkDuartion();
+    await checkDuartion();
     const result = await db.query(
       `SELECT items.id, title, duration FROM items INNER JOIN time_table ON time_id = time_table.id WHERE duration =$1 ORDER BY items.id ASC`,
       [listTitle]
     );
     items = result.rows;
-    console.log(items);
 
     res.render("index.ejs", {
       listTitle,
@@ -57,6 +56,12 @@ app.get("/", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+app.post("/change", async(req, res)=>{
+  const title = parseInt(req.body.title);
+  durationId = title;
+  res.redirect("/");
 });
 
 app.post("/add", async (req, res) => {
