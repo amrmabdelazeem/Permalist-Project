@@ -20,14 +20,18 @@ const db = new pg.Client({
 db.connect();
 
 let items = [];
+let listTitle = "Daily";
 
 app.get("/", async (req, res) => {
   try {
-    const result = await db.query(`SELECT * FROM items ORDER BY id ASC`);
+    const result = await db.query(`SELECT * FROM items
+    INNER JOIN time_table
+    ON time_id = time_table.id
+    WHERE duration = $1`,[listTitle]);
     items = result.rows;
 
     res.render("index.ejs", {
-      listTitle: "Today",
+      listTitle,
       listItems: items,
     });
   } catch (error) {
