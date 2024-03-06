@@ -21,6 +21,7 @@ This is a simple todo list application built using Node.js, Express, and Postgre
 - Edit existing items
 - Delete items
 - View all items in the list
+- *New*: Add Daily, Monthly, Yearly lists. You can add tasks that need to be completed.
 
 # Technologies Used
 
