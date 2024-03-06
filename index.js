@@ -19,11 +19,21 @@ const db = new pg.Client({
 
 db.connect();
 
+let durationId = 1;
 let items = [];
 let listTitle = "Daily";
 
+async function checkDuartion() {
+  const result = await db.query("SELECT * FROM time_table ORDER BY id ASC");
+  result.rows.forEach((item) => {
+    if (item.id === durationId) {
+      listTitle = item.duration;
+    }
+  });
+}
 app.get("/", async (req, res) => {
   try {
+   await checkDuartion();
     const result = await db.query(
       `SELECT * FROM items INNER JOIN time_table ON time_id = time_table.id WHERE duration =$1 ORDER BY items.id ASC`,
       [listTitle]
