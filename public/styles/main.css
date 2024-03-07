@@ -14,7 +14,7 @@ main {
   text-align: center;
   flex: 1 0 auto;
 }
-h1 {
+h2 {
   color: #fff;
   padding: 10px;
   background-color: #5F5D9C;
@@ -49,7 +49,6 @@ h1 {
 #heading {
   background-color: #fff;
   text-align: center;
-
 }
 form.edit {
   display: flex;
