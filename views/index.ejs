@@ -1,8 +1,9 @@
 <%- include('partials/header.ejs'); -%>
+<h1>Todo App Lists</h1>
   <div class="box" id="heading">
-    <h1>
+    <h2>
       <%= listTitle %>
-    </h1>
+    </h2>
     <form action="/change" method="post">
       <select name="title" id="select" onchange="this.form.submit()">
         <option selected>Change</option>
